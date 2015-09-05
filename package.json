@@ -1,0 +1,25 @@
+{
+  "name": "aws-bus",
+  "version": "1.0.0",
+  "description": "Queues a message to an SQS queue and then notifies an SNS topic",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sarahhenderson/aws-bus"
+  },
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "aws",
+    "aws-sdk",
+    "sqs",
+    "sns",
+    "queue",
+    "message bus"
+  ],
+  "author": "Sarah Henderson",
+  "license": "GPL-2.0",
+  "devDependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.1.50"
+  }
+}
