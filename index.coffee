@@ -1,13 +1,12 @@
-AWS = require('aws-sdk')
 
 class AwsBus
 
-   configure: (@sqsUrl, @snsArn, @region, @logger) ->
+   configure: (AWS, @sqsUrl, @snsArn, @logger) ->
+      throw new Error("No AWS object provided") if not AWS?
       throw new Error("No SQS queue url provided") if not @sqsUrl?
       throw new Error("No SNS topic arn provided") if not @snsArn?
-      throw new Error("No region provided") if not @region?
-      @sqs = new AWS.SQS( { region: @region } )
-      @sns = new AWS.SNS( { region: @region } )
+      @sqs = new AWS.SQS()
+      @sns = new AWS.SNS()
 
 
    send: (message, done) ->
@@ -41,4 +40,6 @@ class AwsBus
             @logger.debug "AwsBus: Published to SNS" if @logger?
             done(null)
 
-module.exports = new AwsBus()
+instance = new AwsBus()
+
+module.exports = instance
